@@ -1,0 +1,48 @@
+# Life OS 桌面版打包配置（electron-builder）
+appId: app.lifeos.desktop
+productName: Life OS
+copyright: Copyright © 2026 Life OS
+directories:
+  app: desktop          # 桌面壳本身（main / preload / 启动页），不带网页依赖
+  output: dist-desktop
+  buildResources: desktop/build
+files:
+  - "**/*"
+  - "!scripts/**"
+  - "!electron-builder.yml"
+  # buildResources 目录默认不进 asar，但启动页、窗口和托盘都要用这张图标
+  - "build/icon.png"
+asar: true
+beforeBuild: desktop/scripts/before-build.cjs
+# Next standalone 服务放在 resources/server，由主进程用 utilityProcess 启动
+# electron-builder 会无条件跳过 from 目录根下的 node_modules，所以 from 指向上一层（build.cjs 负责挪过去）
+extraResources:
+  - from: .next/desktop
+    to: .
+    filter:
+      - "server/**"
+icon: desktop/build/icon.png
+
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  artifactName: "Life-OS-Setup-${version}.${ext}"
+nsis:
+  oneClick: false
+  perMachine: false            # 装在用户目录，不需要管理员权限
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  shortcutName: Life OS
+
+mac:
+  target:
+    - target: dmg
+      arch: [arm64, x64]
+  category: public.app-category.productivity
+  artifactName: "Life-OS-${version}-${arch}.${ext}"
+  hardenedRuntime: true
+  # 没有 Apple 开发者证书时不签名；首次打开需右键 → 打开
+  identity: null
+dmg:
+  title: Life OS

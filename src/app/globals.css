@@ -1,0 +1,186 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans-stack);
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --font-sans-stack: "Inter", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* 布局尺寸：顶栏高度、移动端底部标签栏高度（含安全区） */
+:root {
+  --app-top-h: 3rem;
+  --mobile-nav-h: 0px;
+}
+@media (max-width: 767px) {
+  :root {
+    --app-top-h: calc(3.5rem + env(safe-area-inset-top));
+    --mobile-nav-h: calc(3.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* ---------- 桌面版（Electron）：自定义标题栏 ---------- */
+/* 顶栏可拖动窗口，里面的按钮、输入框照常点击 */
+.desktop [data-titlebar] { -webkit-app-region: drag; user-select: none; }
+.desktop [data-titlebar] :is(button, a, input, [role="button"]) { -webkit-app-region: no-drag; }
+/* Windows：右上角留出原生最小化 / 最大化 / 关闭按钮的位置 */
+.desktop-win [data-titlebar] { padding-right: 148px; }
+/* Mac：左上角红绿灯在侧边栏顶部，侧边栏 Logo 往下让一让；侧边栏顶部也能拖动窗口 */
+.desktop-mac [data-slot="sidebar-header"] { padding-top: 2.5rem; -webkit-app-region: drag; }
+.desktop-mac [data-slot="sidebar"][data-state="collapsed"] [data-slot="sidebar-header"] { padding-top: 2.75rem; }
+/* 窗口很窄时没有侧边栏，红绿灯落在移动端顶栏里 */
+@media (max-width: 767px) { .desktop-mac [data-titlebar] { padding-left: 84px; } }
+
+/* 视口内除去顶栏和底部标签栏后的可用高度 */
+@utility h-app {
+  height: calc(100svh - var(--app-top-h) - var(--mobile-nav-h));
+}
+/* 横向滚动条隐藏（移动端横滑列表、照片标签行） */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
+  @media (max-width: 767px) {
+    body { overscroll-behavior-y: none; }
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--muted-foreground) 35%, transparent) transparent;
+  }
+}
+
+/* Markdown 渲染（放在 components 层，组件上的工具类可以覆盖它） */
+@layer components {
+  .prose-md { @apply text-sm leading-7; }
+  .prose-md h1 { @apply text-xl font-semibold mt-2 mb-3; }
+  .prose-md h2 { @apply text-base font-semibold mt-5 mb-2; }
+  .prose-md h3 { @apply text-sm font-semibold mt-4 mb-1; }
+  .prose-md p { @apply my-2; }
+  .prose-md ul { @apply list-disc pl-5 my-2; }
+  .prose-md ol { @apply list-decimal pl-5 my-2; }
+  .prose-md li { @apply my-0.5; }
+  .prose-md a { @apply underline underline-offset-4; }
+  .prose-md code { @apply rounded bg-muted px-1 py-0.5 font-mono text-[0.8em]; }
+  .prose-md pre { @apply my-3 overflow-x-auto rounded-lg bg-muted p-3; }
+  .prose-md pre code { @apply bg-transparent p-0; }
+  .prose-md blockquote { @apply border-l-2 pl-3 text-muted-foreground my-2; }
+  .prose-md table { @apply my-3 w-full border-collapse text-sm; }
+  .prose-md th, .prose-md td { @apply border px-2 py-1 text-left; }
+  .prose-md hr { @apply my-4; }
+  .prose-md input[type="checkbox"] { @apply mr-1.5 align-middle; }
+}

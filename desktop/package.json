@@ -1,0 +1,10 @@
+{
+  "name": "life-os-desktop",
+  "productName": "Life OS",
+  "version": "1.0.0",
+  "description": "Life OS 桌面版：个人上下文 Agent",
+  "license": "MIT",
+  "author": "Life OS",
+  "private": true,
+  "main": "main.cjs"
+}
